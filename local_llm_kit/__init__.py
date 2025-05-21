@@ -2,7 +2,7 @@
 local_llm_kit - OpenAI-like interface for local LLMs
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 
 from .llm import LLM
 from .chat import chat, complete

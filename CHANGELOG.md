@@ -10,6 +10,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Future features and improvements will be listed here
 
+## [0.1.2] - 2024-03-15
+
+### Added
+- Comprehensive documentation in PyPI package
+- Additional documentation files included in distribution
+
+### Fixed
+- Documentation visibility on PyPI
+
+## [0.1.1] - 2024-03-15
+
+### Added
+- Comprehensive documentation system
+- Detailed API reference documentation
+- Step-by-step tutorials with code examples
+- Best practices guide
+- Supported models documentation
+- Contributing guidelines
+- PyPI packaging improvements
+
+### Changed
+- Reorganized documentation structure
+- Enhanced README with more examples
+
 ## [0.1.0] - 2023-11-25
 
 ### Added
@@ -29,4 +53,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - ChatML
   - Plain Instruct
 - Command line interface
-- Basic examples and documentation 
+- Basic examples and documentation
+
+### Changed
+- N/A (Initial release)
+
+### Deprecated
+- N/A (Initial release)
+
+### Removed
+- N/A (Initial release)
+
+### Fixed
+- N/A (Initial release)
+
+### Security
+- N/A (Initial release) 

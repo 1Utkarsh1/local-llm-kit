@@ -1,5 +1,5 @@
 # Local LLM Kit
-(https://local-llm-kit-package.readthedocs.io/en/latest/contributing.html)
+(https://local-llm-kit-package.readthedocs.io/en/latest/index.html)
 
 An OpenAI-like interface for local Large Language Models. This package allows you to interact with local LLMs using an API similar to OpenAI's, including support for chat completions, function calling, streaming responses, and more.
 

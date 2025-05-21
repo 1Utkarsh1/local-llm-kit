@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supported Models &mdash; Local_LLM_Kit 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api_reference.html" />
+    <link rel="prev" title="Tutorials" href="tutorials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Local_LLM_Kit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#model-backends">Model Backends</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transformers-backend">Transformers Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#llama-cpp-backend">llama.cpp Backend</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model-configuration">Model Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#common-parameters">Common Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#memory-requirements">Memory Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-tips">Performance Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-acceleration">GPU Acceleration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cpu-optimization">CPU Optimization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model-selection-guide">Model Selection Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-model-integration">Custom Model Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Local_LLM_Kit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Supported Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="supported-models">
+<h1>Supported Models<a class="headerlink" href="#supported-models" title="Link to this heading"></a></h1>
+<p>This page documents the models supported by <code class="docutils literal notranslate"><span class="pre">local_llm_kit</span></code> and their configurations.</p>
+<section id="model-backends">
+<h2>Model Backends<a class="headerlink" href="#model-backends" title="Link to this heading"></a></h2>
+<section id="transformers-backend">
+<h3>Transformers Backend<a class="headerlink" href="#transformers-backend" title="Link to this heading"></a></h3>
+<p>The Transformers backend supports models from Hugging Face’s Transformers library.</p>
+<dl class="simple">
+<dt>Supported Model Types:</dt><dd><ul class="simple">
+<li><p>LLaMA and LLaMA-2</p></li>
+<li><p>Mistral</p></li>
+<li><p>Falcon</p></li>
+<li><p>MPT</p></li>
+<li><p>GPTQ quantized models</p></li>
+</ul>
+</dd>
+</dl>
+<p>Configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;transformers&quot;</span><span class="p">,</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;meta-llama/Llama-2-7b-chat-hf&quot;</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>  <span class="c1"># or &quot;cpu&quot;</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float16&quot;</span><span class="p">,</span>  <span class="c1"># or &quot;float32&quot;, &quot;bfloat16&quot;</span>
+    <span class="n">trust_remote_code</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="llama-cpp-backend">
+<h3>llama.cpp Backend<a class="headerlink" href="#llama-cpp-backend" title="Link to this heading"></a></h3>
+<p>The llama.cpp backend supports GGUF format models.</p>
+<dl class="simple">
+<dt>Supported Features:</dt><dd><ul class="simple">
+<li><p>4-bit, 5-bit, and 8-bit quantization</p></li>
+<li><p>GPU acceleration</p></li>
+<li><p>Metal support on macOS</p></li>
+<li><p>Efficient CPU inference</p></li>
+</ul>
+</dd>
+</dl>
+<p>Configuration:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">backend</span><span class="o">=</span><span class="s2">&quot;llama.cpp&quot;</span><span class="p">,</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;/path/to/model.gguf&quot;</span><span class="p">,</span>
+    <span class="n">n_gpu_layers</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>  <span class="c1"># Number of layers to offload to GPU</span>
+    <span class="n">n_ctx</span><span class="o">=</span><span class="mi">2048</span><span class="p">,</span>  <span class="c1"># Context window size</span>
+    <span class="n">n_batch</span><span class="o">=</span><span class="mi">512</span>  <span class="c1"># Batch size for prompt processing</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="model-configuration">
+<h2>Model Configuration<a class="headerlink" href="#model-configuration" title="Link to this heading"></a></h2>
+<section id="common-parameters">
+<h3>Common Parameters<a class="headerlink" href="#common-parameters" title="Link to this heading"></a></h3>
+<p>These parameters work with all model backends:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">temperature</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span>  <span class="c1"># Randomness in generation (0.0 to 1.0)</span>
+    <span class="n">top_p</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span>  <span class="c1"># Nucleus sampling parameter</span>
+    <span class="n">top_k</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>  <span class="c1"># Top-k sampling parameter</span>
+    <span class="n">repetition_penalty</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>  <span class="c1"># Penalty for repeating tokens</span>
+    <span class="n">max_tokens</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>  <span class="c1"># Maximum tokens to generate</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="memory-requirements">
+<h3>Memory Requirements<a class="headerlink" href="#memory-requirements" title="Link to this heading"></a></h3>
+<p>Approximate memory requirements for different model sizes:</p>
+</section>
+</section>
+<section id="performance-tips">
+<h2>Performance Tips<a class="headerlink" href="#performance-tips" title="Link to this heading"></a></h2>
+<section id="gpu-acceleration">
+<h3>GPU Acceleration<a class="headerlink" href="#gpu-acceleration" title="Link to this heading"></a></h3>
+<p>For optimal GPU performance:</p>
+<ol class="arabic simple">
+<li><p>Use CUDA devices when available</p></li>
+<li><p>Enable flash attention if supported</p></li>
+<li><p>Use appropriate batch sizes</p></li>
+<li><p>Monitor GPU memory usage</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cuda&quot;</span><span class="p">,</span>
+    <span class="n">use_flash_attention</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">max_batch_size</span><span class="o">=</span><span class="mi">32</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="cpu-optimization">
+<h3>CPU Optimization<a class="headerlink" href="#cpu-optimization" title="Link to this heading"></a></h3>
+<p>For CPU inference:</p>
+<ol class="arabic simple">
+<li><p>Use quantized models</p></li>
+<li><p>Set appropriate thread count</p></li>
+<li><p>Enable CPU optimizations</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+    <span class="n">device</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span>
+    <span class="n">threads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">use_mmap</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">use_avx2</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="model-selection-guide">
+<h2>Model Selection Guide<a class="headerlink" href="#model-selection-guide" title="Link to this heading"></a></h2>
+<p>Choosing the right model depends on your use case:</p>
+<ol class="arabic simple">
+<li><p>Resource-Constrained Environments
+- Use 4-bit quantized 7B models
+- Consider CPU-optimized models
+- Reduce context length if possible</p></li>
+<li><p>High-Performance Requirements
+- Use larger models (13B+)
+- Enable GPU acceleration
+- Optimize batch processing</p></li>
+<li><p>Balanced Setup
+- Use 7B models with 8-bit quantization
+- Balance GPU/CPU usage
+- Adjust parameters based on workload</p></li>
+</ol>
+</section>
+<section id="custom-model-integration">
+<h2>Custom Model Integration<a class="headerlink" href="#custom-model-integration" title="Link to this heading"></a></h2>
+<p>You can integrate custom models by:</p>
+<ol class="arabic simple">
+<li><p>Converting to GGUF format for llama.cpp</p></li>
+<li><p>Using Hugging Face’s model format</p></li>
+<li><p>Implementing custom tokenizers</p></li>
+</ol>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">local_llm_kit</span> <span class="kn">import</span> <span class="n">LLMClient</span><span class="p">,</span> <span class="n">CustomTokenizer</span>
+
+<span class="c1"># Custom tokenizer implementation</span>
+<span class="k">class</span> <span class="nc">MyTokenizer</span><span class="p">(</span><span class="n">CustomTokenizer</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+        <span class="c1"># Implementation</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tokens</span><span class="p">):</span>
+        <span class="c1"># Implementation</span>
+        <span class="k">pass</span>
+
+<span class="c1"># Use custom model</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span>
+    <span class="n">model</span><span class="o">=</span><span class="s2">&quot;custom&quot;</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="o">=</span><span class="n">MyTokenizer</span><span class="p">(),</span>
+    <span class="n">model_path</span><span class="o">=</span><span class="s2">&quot;/path/to/custom/model&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p>Common Issues:</p>
+<ol class="arabic simple">
+<li><p>Out of Memory
+- Reduce batch size
+- Use quantization
+- Decrease context length</p></li>
+<li><p>Slow Performance
+- Check device utilization
+- Optimize model parameters
+- Consider model quantization</p></li>
+<li><p>Model Loading Errors
+- Verify model path
+- Check format compatibility
+- Ensure sufficient resources</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api_reference.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Utkarsh Rajput.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

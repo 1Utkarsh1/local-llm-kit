@@ -1,0 +1,623 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Practices &mdash; Local_LLM_Kit 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="API Reference" href="api_reference.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Local_LLM_Kit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="models.html">Supported Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_reference.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#model-selection">Model Selection</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#choosing-the-right-model">Choosing the Right Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#performance-optimization">Performance Optimization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#memory-management">Memory Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gpu-utilization">GPU Utilization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#error-handling">Error Handling</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#robust-implementation">Robust Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retry-logic">Retry Logic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#prompt-engineering">Prompt Engineering</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#effective-prompts">Effective Prompts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#temperature-control">Temperature Control</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#security-considerations">Security Considerations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#input-validation">Input Validation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-security">Model Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-and-logging">Monitoring and Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#logging-setup">Logging Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performance-monitoring">Performance Monitoring</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-and-validation">Testing and Validation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#unit-testing">Unit Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-testing">Integration Testing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deployment-best-practices">Deployment Best Practices</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#environment-setup">Environment Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#production-configuration">Production Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Local_LLM_Kit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Best Practices</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/best_practices.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="best-practices">
+<h1>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h1>
+<p>This guide outlines best practices for using <code class="docutils literal notranslate"><span class="pre">local_llm_kit</span></code> effectively and efficiently.</p>
+<section id="model-selection">
+<h2>Model Selection<a class="headerlink" href="#model-selection" title="Link to this heading"></a></h2>
+<section id="choosing-the-right-model">
+<h3>Choosing the Right Model<a class="headerlink" href="#choosing-the-right-model" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Consider your requirements:
+* Task complexity
+* Response quality needs
+* Performance constraints
+* Resource availability</p></li>
+<li><p>Match model size to available resources:
+* 7B models for most use cases
+* 13B+ models for higher quality
+* Quantized models for resource constraints</p></li>
+<li><p>Consider specialization:
+* Chat models for dialogue
+* Code models for programming
+* Multi-lingual models for language tasks</p></li>
+</ol>
+</section>
+</section>
+<section id="performance-optimization">
+<h2>Performance Optimization<a class="headerlink" href="#performance-optimization" title="Link to this heading"></a></h2>
+<section id="memory-management">
+<h3>Memory Management<a class="headerlink" href="#memory-management" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Token Management:
+.. code-block:: python</p>
+<blockquote>
+<div><p>client = LLMClient(model=”llama2”)
+client.enable_memory(max_tokens=1000)</p>
+<p># Regularly clear memory
+client.clear_memory()</p>
+<p># Monitor token usage
+response = client.chat.completions.create(…)
+print(f”Used tokens: {response.usage.total_tokens}”)</p>
+</div></blockquote>
+</li>
+<li><p>Batch Processing:
+.. code-block:: python</p>
+<blockquote>
+<div><p># Process multiple prompts efficiently
+responses = []
+for prompt in prompts:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>response = client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=[{“role”: “user”, “content”: prompt}],
+max_tokens=50  # Limit response length</p>
+</dd>
+</dl>
+<p>)
+responses.append(response)</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="gpu-utilization">
+<h3>GPU Utilization<a class="headerlink" href="#gpu-utilization" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Optimal Settings:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>client = LLMClient(</dt><dd><p>model=”llama2”,
+device=”cuda”,
+use_flash_attention=True,
+max_batch_size=32,
+dtype=”float16”</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
+</li>
+<li><p>Memory Monitoring:
+* Use GPU monitoring tools
+* Adjust batch size based on memory
+* Consider gradient checkpointing</p></li>
+</ol>
+</section>
+</section>
+<section id="error-handling">
+<h2>Error Handling<a class="headerlink" href="#error-handling" title="Link to this heading"></a></h2>
+<section id="robust-implementation">
+<h3>Robust Implementation<a class="headerlink" href="#robust-implementation" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Basic Error Handling:
+.. code-block:: python</p>
+<blockquote>
+<div><dl>
+<dt>try:</dt><dd><dl class="simple">
+<dt>response = client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=[{“role”: “user”, “content”: “Hello”}]</p>
+</dd>
+</dl>
+<p>)</p>
+</dd>
+<dt>except Exception as e:</dt><dd><p>logger.error(f”Chat completion failed: {e}”)
+# Implement fallback behavior</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>Specific Error Types:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>from local_llm_kit.exceptions import (</dt><dd><p>ModelNotFoundError,
+TokenLimitError,
+InvalidRequestError</p>
+</dd>
+</dl>
+<p>)</p>
+<dl class="simple">
+<dt>try:</dt><dd><p># Your code here</p>
+</dd>
+<dt>except ModelNotFoundError:</dt><dd><p># Handle missing model</p>
+</dd>
+<dt>except TokenLimitError:</dt><dd><p># Handle token limit exceeded</p>
+</dd>
+<dt>except InvalidRequestError:</dt><dd><p># Handle invalid parameters</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="retry-logic">
+<h3>Retry Logic<a class="headerlink" href="#retry-logic" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tenacity</span> <span class="kn">import</span> <span class="n">retry</span><span class="p">,</span> <span class="n">stop_after_attempt</span><span class="p">,</span> <span class="n">wait_exponential</span>
+
+<span class="nd">@retry</span><span class="p">(</span><span class="n">stop</span><span class="o">=</span><span class="n">stop_after_attempt</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">wait</span><span class="o">=</span><span class="n">wait_exponential</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">get_completion</span><span class="p">(</span><span class="n">prompt</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">,</span>
+        <span class="n">messages</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="prompt-engineering">
+<h2>Prompt Engineering<a class="headerlink" href="#prompt-engineering" title="Link to this heading"></a></h2>
+<section id="effective-prompts">
+<h3>Effective Prompts<a class="headerlink" href="#effective-prompts" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Clear Instructions:
+.. code-block:: python</p>
+<blockquote>
+<div><dl>
+<dt>messages = [</dt><dd><dl class="simple">
+<dt>{</dt><dd><p>“role”: “system”,
+“content”: “You are a helpful assistant. Provide clear, concise answers.”</p>
+</dd>
+</dl>
+<p>},
+{</p>
+<blockquote>
+<div><p>“role”: “user”,
+“content”: “What is machine learning? Explain in simple terms.”</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+</li>
+<li><p>Context Management:
+.. code-block:: python</p>
+<blockquote>
+<div><p># Add relevant context
+messages = [</p>
+<blockquote>
+<div><p>{“role”: “system”, “content”: system_prompt},
+{“role”: “user”, “content”: “Remember this: I’m John.”},
+{“role”: “assistant”, “content”: “Hello John!”},
+{“role”: “user”, “content”: “What’s my name?”}</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="temperature-control">
+<h3>Temperature Control<a class="headerlink" href="#temperature-control" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>For Deterministic Responses:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>response = client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=messages,
+temperature=0.0,  # More deterministic
+top_p=1.0</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
+</li>
+<li><p>For Creative Responses:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>response = client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=messages,
+temperature=0.8,  # More creative
+top_p=0.9</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+<section id="security-considerations">
+<h2>Security Considerations<a class="headerlink" href="#security-considerations" title="Link to this heading"></a></h2>
+<section id="input-validation">
+<h3>Input Validation<a class="headerlink" href="#input-validation" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Sanitize Inputs:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def sanitize_input(text):</dt><dd><p># Implement input sanitization
+return cleaned_text</p>
+</dd>
+</dl>
+<p>user_input = sanitize_input(raw_input)
+response = client.chat.completions.create(</p>
+<blockquote>
+<div><p>model=”llama2”,
+messages=[{“role”: “user”, “content”: user_input}]</p>
+</div></blockquote>
+<p>)</p>
+</div></blockquote>
+</li>
+<li><p>Content Filtering:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>def is_safe_content(text):</dt><dd><p># Implement content safety checks
+return is_safe</p>
+</dd>
+<dt>if not is_safe_content(user_input):</dt><dd><p>raise SecurityError(“Unsafe content detected”)</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="model-security">
+<h3>Model Security<a class="headerlink" href="#model-security" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Model Access Control:
+.. code-block:: python</p>
+<blockquote>
+<div><p># Use environment variables for sensitive paths
+model_path = os.getenv(“LOCAL_LLM_KIT_MODEL_PATH”)
+client = LLMClient(</p>
+<blockquote>
+<div><p>model=”llama2”,
+model_path=model_path</p>
+</div></blockquote>
+<p>)</p>
+</div></blockquote>
+</li>
+<li><p>Rate Limiting:
+.. code-block:: python</p>
+<blockquote>
+<div><p>from ratelimit import limits, sleep_and_retry</p>
+<p>&#64;sleep_and_retry
+&#64;limits(calls=10, period=60)  # 10 calls per minute
+def rate_limited_completion(prompt):</p>
+<blockquote>
+<div><dl class="simple">
+<dt>return client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=[{“role”: “user”, “content”: prompt}]</p>
+</dd>
+</dl>
+<p>)</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+<section id="monitoring-and-logging">
+<h2>Monitoring and Logging<a class="headerlink" href="#monitoring-and-logging" title="Link to this heading"></a></h2>
+<section id="logging-setup">
+<h3>Logging Setup<a class="headerlink" href="#logging-setup" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Basic Logging:
+.. code-block:: python</p>
+<blockquote>
+<div><p>import logging</p>
+<p>logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(“local_llm_kit”)</p>
+<p>logger.info(“Initializing client…”)
+client = LLMClient(model=”llama2”)</p>
+</div></blockquote>
+</li>
+<li><p>Detailed Logging:
+.. code-block:: python</p>
+<blockquote>
+<div><p>handler = logging.FileHandler(“llm.log”)
+handler.setFormatter(logging.Formatter(</p>
+<blockquote>
+<div><p>‘%(asctime)s - %(name)s - %(levelname)s - %(message)s’</p>
+</div></blockquote>
+<p>))
+logger.addHandler(handler)</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="performance-monitoring">
+<h3>Performance Monitoring<a class="headerlink" href="#performance-monitoring" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Response Times:
+.. code-block:: python</p>
+<blockquote>
+<div><p>import time</p>
+<p>start_time = time.time()
+response = client.chat.completions.create(…)
+duration = time.time() - start_time</p>
+<p>logger.info(f”Response time: {duration:.2f}s”)</p>
+</div></blockquote>
+</li>
+<li><p>Resource Usage:
+.. code-block:: python</p>
+<blockquote>
+<div><p>import psutil</p>
+<dl class="simple">
+<dt>def log_resource_usage():</dt><dd><p>process = psutil.Process()
+logger.info(f”Memory usage: {process.memory_info().rss / 1024 / 1024:.2f} MB”)
+logger.info(f”CPU usage: {process.cpu_percent()}%”)</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
+<section id="testing-and-validation">
+<h2>Testing and Validation<a class="headerlink" href="#testing-and-validation" title="Link to this heading"></a></h2>
+<section id="unit-testing">
+<h3>Unit Testing<a class="headerlink" href="#unit-testing" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Basic Tests:
+.. code-block:: python</p>
+<blockquote>
+<div><p>import unittest</p>
+<dl>
+<dt>class TestLLMClient(unittest.TestCase):</dt><dd><dl>
+<dt>def setUp(self):</dt><dd><p>self.client = LLMClient(model=”llama2”)</p>
+</dd>
+<dt>def test_completion(self):</dt><dd><dl class="simple">
+<dt>response = self.client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=[{“role”: “user”, “content”: “Hello”}]</p>
+</dd>
+</dl>
+<p>)
+self.assertIsNotNone(response)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+<li><p>Mock Testing:
+.. code-block:: python</p>
+<blockquote>
+<div><p>from unittest.mock import patch</p>
+<p>&#64;patch(“local_llm_kit.LLMClient”)
+def test_with_mock(mock_client):</p>
+<blockquote>
+<div><p>mock_client.return_value.chat.completions.create.return_value = mock_response
+# Test implementation</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="integration-testing">
+<h3>Integration Testing<a class="headerlink" href="#integration-testing" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_end_to_end</span><span class="p">():</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">LLMClient</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama2&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Test chat completion</span>
+    <span class="n">response1</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+    <span class="c1"># Test function calling</span>
+    <span class="n">response2</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">functions</span><span class="o">=</span><span class="p">[</span><span class="n">function_spec</span><span class="p">],</span>
+        <span class="n">function_call</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Test streaming</span>
+    <span class="n">response3</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+        <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="o">...</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="deployment-best-practices">
+<h2>Deployment Best Practices<a class="headerlink" href="#deployment-best-practices" title="Link to this heading"></a></h2>
+<section id="environment-setup">
+<h3>Environment Setup<a class="headerlink" href="#environment-setup" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Dependencies:
+.. code-block:: bash</p>
+<blockquote>
+<div><p>pip install local-llm-kit[all]  # Install all optional dependencies</p>
+</div></blockquote>
+</li>
+<li><p>Environment Variables:
+.. code-block:: bash</p>
+<blockquote>
+<div><p>export LOCAL_LLM_KIT_MODEL_PATH=”/path/to/models”
+export LOCAL_LLM_KIT_CACHE_DIR=”/path/to/cache”</p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="production-configuration">
+<h3>Production Configuration<a class="headerlink" href="#production-configuration" title="Link to this heading"></a></h3>
+<ol class="arabic">
+<li><p>Load Balancing:
+.. code-block:: python</p>
+<blockquote>
+<div><dl class="simple">
+<dt>clients = [</dt><dd><p>LLMClient(model=”llama2”, device=f”cuda:{i}”)
+for i in range(torch.cuda.device_count())</p>
+</dd>
+</dl>
+<p>]</p>
+</div></blockquote>
+</li>
+<li><p>Health Checks:
+.. code-block:: python</p>
+<blockquote>
+<div><dl>
+<dt>def health_check():</dt><dd><dl>
+<dt>try:</dt><dd><dl class="simple">
+<dt>response = client.chat.completions.create(</dt><dd><p>model=”llama2”,
+messages=[{“role”: “user”, “content”: “test”}]</p>
+</dd>
+</dl>
+<p>)
+return True</p>
+</dd>
+<dt>except Exception:</dt><dd><p>return False</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+<p>Remember to regularly review and update these practices based on your specific use case and requirements.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api_reference.html" class="btn btn-neutral float-left" title="API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Utkarsh Rajput.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

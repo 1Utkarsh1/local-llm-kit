@@ -1,0 +1,347 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; Local_LLM_Kit 0.1.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=92fd9be5" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=92734c54"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Best Practices" href="best_practices.html" />
+    <link rel="prev" title="Supported Models" href="models.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Local_LLM_Kit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">User Guide:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="models.html">Supported Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#llmclient">LLMClient</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#LLMClient"><code class="docutils literal notranslate"><span class="pre">LLMClient</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#chat-completions">Chat Completions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#LLMClient.chat.completions.create"><code class="docutils literal notranslate"><span class="pre">LLMClient.chat.completions.create()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#memory-management">Memory Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#LLMClient.enable_memory"><code class="docutils literal notranslate"><span class="pre">LLMClient.enable_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#LLMClient.add_to_memory"><code class="docutils literal notranslate"><span class="pre">LLMClient.add_to_memory()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#LLMClient.clear_memory"><code class="docutils literal notranslate"><span class="pre">LLMClient.clear_memory()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#response-objects">Response Objects</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#completionresponse">CompletionResponse</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#CompletionResponse"><code class="docutils literal notranslate"><span class="pre">CompletionResponse</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#choice">Choice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Choice"><code class="docutils literal notranslate"><span class="pre">Choice</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#message">Message</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Usage"><code class="docutils literal notranslate"><span class="pre">Usage</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ModelNotFoundError"><code class="docutils literal notranslate"><span class="pre">ModelNotFoundError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#InvalidRequestError"><code class="docutils literal notranslate"><span class="pre">InvalidRequestError</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#TokenLimitError"><code class="docutils literal notranslate"><span class="pre">TokenLimitError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best_practices.html">Best Practices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Local_LLM_Kit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api_reference.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This page provides detailed documentation for the <code class="docutils literal notranslate"><span class="pre">local_llm_kit</span></code> API.</p>
+<section id="llmclient">
+<h2>LLMClient<a class="headerlink" href="#llmclient" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="LLMClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LLMClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LLMClient" title="Link to this definition"></a></dt>
+<dd><p>The main client class for interacting with local language models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – The name or path of the model to use</p></li>
+<li><p><strong>model_path</strong> – Optional path to model weights</p></li>
+<li><p><strong>context_length</strong> – Maximum context length (default: 2048)</p></li>
+<li><p><strong>temperature</strong> – Sampling temperature (default: 0.7)</p></li>
+<li><p><strong>top_p</strong> – Top-p sampling parameter (default: 0.9)</p></li>
+<li><p><strong>backend</strong> – Model backend to use (‘transformers’ or ‘llama.cpp’)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="chat-completions">
+<h2>Chat Completions<a class="headerlink" href="#chat-completions" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="LLMClient.chat.completions.create">
+<span class="sig-prename descclassname"><span class="pre">LLMClient.chat.completions.</span></span><span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LLMClient.chat.completions.create" title="Link to this definition"></a></dt>
+<dd><p>Create a chat completion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> – Model to use for completion</p></li>
+<li><p><strong>messages</strong> – List of message dictionaries</p></li>
+<li><p><strong>temperature</strong> – Sampling temperature</p></li>
+<li><p><strong>top_p</strong> – Top-p sampling parameter</p></li>
+<li><p><strong>max_tokens</strong> – Maximum tokens to generate</p></li>
+<li><p><strong>stream</strong> – Whether to stream the response</p></li>
+<li><p><strong>functions</strong> – List of function definitions</p></li>
+<li><p><strong>function_call</strong> – Function call behavior</p></li>
+<li><p><strong>response_format</strong> – Specify response format (e.g., JSON)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>CompletionResponse object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="memory-management">
+<h2>Memory Management<a class="headerlink" href="#memory-management" title="Link to this heading"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="LLMClient.enable_memory">
+<span class="sig-prename descclassname"><span class="pre">LLMClient.</span></span><span class="sig-name descname"><span class="pre">enable_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_tokens</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LLMClient.enable_memory" title="Link to this definition"></a></dt>
+<dd><p>Enable conversation memory management.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>max_tokens</strong> – Maximum tokens to store in memory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="LLMClient.add_to_memory">
+<span class="sig-prename descclassname"><span class="pre">LLMClient.</span></span><span class="sig-name descname"><span class="pre">add_to_memory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#LLMClient.add_to_memory" title="Link to this definition"></a></dt>
+<dd><p>Add messages to conversation memory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>messages</strong> – List of message dictionaries</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="LLMClient.clear_memory">
+<span class="sig-prename descclassname"><span class="pre">LLMClient.</span></span><span class="sig-name descname"><span class="pre">clear_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#LLMClient.clear_memory" title="Link to this definition"></a></dt>
+<dd><p>Clear all stored conversation memory.</p>
+</dd></dl>
+
+</section>
+<section id="response-objects">
+<h2>Response Objects<a class="headerlink" href="#response-objects" title="Link to this heading"></a></h2>
+<section id="completionresponse">
+<h3>CompletionResponse<a class="headerlink" href="#completionresponse" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="CompletionResponse">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CompletionResponse</span></span><a class="headerlink" href="#CompletionResponse" title="Link to this definition"></a></dt>
+<dd><p>Represents a completion response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> – Response ID</p></li>
+<li><p><strong>object</strong> – Object type</p></li>
+<li><p><strong>created</strong> – Creation timestamp</p></li>
+<li><p><strong>model</strong> – Model used</p></li>
+<li><p><strong>choices</strong> – List of completion choices</p></li>
+<li><p><strong>usage</strong> – Token usage statistics</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="choice">
+<h3>Choice<a class="headerlink" href="#choice" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="Choice">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Choice</span></span><a class="headerlink" href="#Choice" title="Link to this definition"></a></dt>
+<dd><p>Represents a completion choice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> – Choice index</p></li>
+<li><p><strong>message</strong> – Message content</p></li>
+<li><p><strong>finish_reason</strong> – Reason for completion</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="message">
+<h3>Message<a class="headerlink" href="#message" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="Message">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Message</span></span><a class="headerlink" href="#Message" title="Link to this definition"></a></dt>
+<dd><p>Represents a chat message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>role</strong> – Message role (user/assistant/system)</p></li>
+<li><p><strong>content</strong> – Message content</p></li>
+<li><p><strong>function_call</strong> – Optional function call</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="Usage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Usage</span></span><a class="headerlink" href="#Usage" title="Link to this definition"></a></dt>
+<dd><p>Token usage statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prompt_tokens</strong> – Number of tokens in prompt</p></li>
+<li><p><strong>completion_tokens</strong> – Number of tokens in completion</p></li>
+<li><p><strong>total_tokens</strong> – Total tokens used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="ModelNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ModelNotFoundError</span></span><a class="headerlink" href="#ModelNotFoundError" title="Link to this definition"></a></dt>
+<dd><p>Raised when specified model is not found.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="InvalidRequestError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InvalidRequestError</span></span><a class="headerlink" href="#InvalidRequestError" title="Link to this definition"></a></dt>
+<dd><p>Raised when request parameters are invalid.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="TokenLimitError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TokenLimitError</span></span><a class="headerlink" href="#TokenLimitError" title="Link to this definition"></a></dt>
+<dd><p>Raised when token limit is exceeded.</p>
+</dd></dl>
+
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h2>
+<p>The following environment variables can be used to configure the client:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL_LLM_KIT_MODEL_PATH</span></code>: Default path to model weights</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL_LLM_KIT_BACKEND</span></code>: Default backend to use</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL_LLM_KIT_CONTEXT_LENGTH</span></code>: Default context length</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">LOCAL_LLM_KIT_CACHE_DIR</span></code>: Directory for caching model weights</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="models.html" class="btn btn-neutral float-left" title="Supported Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="best_practices.html" class="btn btn-neutral float-right" title="Best Practices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Utkarsh Rajput.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

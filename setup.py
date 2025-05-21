@@ -19,7 +19,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     author="Utkarsh Rajput",
-    author_email="info@example.com",
+    author_email="utkarshrajput815@gmail.com",
     url="https://github.com/1Utkarsh1/local-llm-kit",
     packages=find_packages(),
     classifiers=[

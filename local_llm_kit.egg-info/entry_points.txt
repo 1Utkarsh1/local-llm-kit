@@ -1,0 +1,2 @@
+[console_scripts]
+local-llm-kit = local_llm_kit.cli:main
